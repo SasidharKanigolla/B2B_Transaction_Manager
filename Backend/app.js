@@ -29,12 +29,12 @@ const dburl = process.env.ATLASDB_URL;
 
 app.use(
   cors({
-    // origin: "http://localhost:3000",
-    // origin: "https://b2b-transaction-manager.netlify.app",
-    // methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // Enable credentials support if needed
+    origin: "https://b2b-transaction-manager.netlify.app", // Specify allowed origin
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
+    credentials: true, // Allow cookies and credentials
   })
 );
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -69,58 +69,6 @@ async function main() {
   await mongoose.connect(dburl);
 }
 
-app.use((req, res, next) => {
-  // console.log(req?.cookies?.userData);
-  // console.log(req.cookies.userData === "null");
-  // console.log(req.isAuthenticated());
-  // const loggedInValue = req.cookies.loggedInValue; // Retrieve the value from the cookie
-  // res.locals.loggedInValue = loggedInValue; // Store it in locals
-  next(); // Proceed to the next middleware or route handler
-});
-
-// const checkUserData = (req, res, next) => {
-//   const userData = req.cookies.userData; // Assuming userData is stored in cookies
-//   console.log(userData);
-//   if (userData === "null" || !userData) {
-//     return res.status(500).json({ error: "User not authenticated" });
-//   }
-//   next(); // User data exists, proceed to the next middleware or route handler
-// };
-
-// app.options("/", (req, res) => {
-//   res.header("Access-Control-Allow-Origin", req.headers.origin);
-//   res.header("Access-Control-Allow-Methods", "POST"); // Adjust the allowed methods as needed
-//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//   res.header("Access-Control-Allow-Credentials", "true"); // Ensure to allow credentials
-//   res.sendStatus(200);
-// });
-
-// const handleOptions = (req, res) => {
-//   const requestOrigin = req.headers.origin;
-//   if (requestOrigin && req.headers["access-control-request-method"]) {
-//     // Check if the request includes credentials
-//     res.header("Access-Control-Allow-Origin", requestOrigin);
-//     res.header("Access-Control-Allow-Methods", "POST"); // Adjust allowed methods as needed
-//     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//     res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
-//     res.sendStatus(200);
-//   } else {
-//     res.sendStatus(204); // No content, as this is an OPTIONS request
-//   }
-// };
-
-// // Handle OPTIONS requests for login, signup, and root routes
-// app.options(["/", "/login", "/signup"], handleOptions);
-
-// // Error handler middleware to handle CORS headers for error responses
-// app.use((err, req, res, next) => {
-//   let { statusCode = 500, message = "Something went wrong!!" } = err;
-//   const allowedOrigin = req.headers.origin;
-//   res
-//     .status(statusCode)
-//     .header("Access-Control-Allow-Origin", allowedOrigin || "*")
-//     .json({ error: message });
-// });
 app.use("/", userRouter);
 app.use("/customer", customerRouter);
 app.use("/supplier", supplierRouter);
