@@ -87,40 +87,40 @@ app.use((req, res, next) => {
 //   next(); // User data exists, proceed to the next middleware or route handler
 // };
 
-app.options("/", (req, res) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin);
-  res.header("Access-Control-Allow-Methods", "POST"); // Adjust the allowed methods as needed
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true"); // Ensure to allow credentials
-  res.sendStatus(200);
-});
+// app.options("/", (req, res) => {
+//   res.header("Access-Control-Allow-Origin", req.headers.origin);
+//   res.header("Access-Control-Allow-Methods", "POST"); // Adjust the allowed methods as needed
+//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   res.header("Access-Control-Allow-Credentials", "true"); // Ensure to allow credentials
+//   res.sendStatus(200);
+// });
 
-const handleOptions = (req, res) => {
-  const requestOrigin = req.headers.origin;
-  if (requestOrigin && req.headers["access-control-request-method"]) {
-    // Check if the request includes credentials
-    res.header("Access-Control-Allow-Origin", requestOrigin);
-    res.header("Access-Control-Allow-Methods", "POST"); // Adjust allowed methods as needed
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(204); // No content, as this is an OPTIONS request
-  }
-};
+// const handleOptions = (req, res) => {
+//   const requestOrigin = req.headers.origin;
+//   if (requestOrigin && req.headers["access-control-request-method"]) {
+//     // Check if the request includes credentials
+//     res.header("Access-Control-Allow-Origin", requestOrigin);
+//     res.header("Access-Control-Allow-Methods", "POST"); // Adjust allowed methods as needed
+//     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//     res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
+//     res.sendStatus(200);
+//   } else {
+//     res.sendStatus(204); // No content, as this is an OPTIONS request
+//   }
+// };
 
-// Handle OPTIONS requests for login, signup, and root routes
-app.options(["/", "/login", "/signup"], handleOptions);
+// // Handle OPTIONS requests for login, signup, and root routes
+// app.options(["/", "/login", "/signup"], handleOptions);
 
-// Error handler middleware to handle CORS headers for error responses
-app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something went wrong!!" } = err;
-  const allowedOrigin = req.headers.origin;
-  res
-    .status(statusCode)
-    .header("Access-Control-Allow-Origin", allowedOrigin || "*")
-    .json({ error: message });
-});
+// // Error handler middleware to handle CORS headers for error responses
+// app.use((err, req, res, next) => {
+//   let { statusCode = 500, message = "Something went wrong!!" } = err;
+//   const allowedOrigin = req.headers.origin;
+//   res
+//     .status(statusCode)
+//     .header("Access-Control-Allow-Origin", allowedOrigin || "*")
+//     .json({ error: message });
+// });
 app.use("/", userRouter);
 app.use("/customer", customerRouter);
 app.use("/supplier", supplierRouter);
