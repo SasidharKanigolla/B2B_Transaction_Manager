@@ -28,13 +28,12 @@ const dburl = process.env.ATLASDB_URL;
 // console.log(dburl);
 
 app.use(
-  cors()
-  // cors({
-  //   // origin: "http://localhost:3000",
-  //   origin: "https://b2b-transaction-manager.netlify.app",
-  //   methods: ["GET", "POST", "PUT", "DELETE"],
-  //   credentials: true, // Enable credentials support if needed
-  // })
+  cors({
+    // origin: "http://localhost:3000",
+    // origin: "https://b2b-transaction-manager.netlify.app",
+    // methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Enable credentials support if needed
+  })
 );
 app.use(express.json());
 app.use(cookieParser());
