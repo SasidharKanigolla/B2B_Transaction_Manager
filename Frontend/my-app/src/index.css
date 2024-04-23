@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Jersey+25&display=swap");
+
+.font-jersey-25 {
+  font-family: "Jersey 25", sans-serif;
+}
