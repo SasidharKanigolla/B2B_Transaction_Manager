@@ -77,13 +77,14 @@ app.use((req, res, next) => {
   next(); // Proceed to the next middleware or route handler
 });
 
-const checkUserData = (req, res, next) => {
-  const userData = req.cookies.userData; // Assuming userData is stored in cookies
-  if (userData === "null" || !userData) {
-    return res.status(500).json({ error: "User not authenticated" });
-  }
-  next(); // User data exists, proceed to the next middleware or route handler
-};
+// const checkUserData = (req, res, next) => {
+//   const userData = req.cookies.userData; // Assuming userData is stored in cookies
+//   console.log(userData);
+//   if (userData === "null" || !userData) {
+//     return res.status(500).json({ error: "User not authenticated" });
+//   }
+//   next(); // User data exists, proceed to the next middleware or route handler
+// };
 
 app.options("/", (req, res) => {
   res.header("Access-Control-Allow-Origin", req.headers.origin);
@@ -120,10 +121,10 @@ app.use((err, req, res, next) => {
     .json({ error: message });
 });
 app.use("/", userRouter);
-app.use("/customer", checkUserData, customerRouter);
-app.use("/supplier", checkUserData, supplierRouter);
-app.use("/stock", checkUserData, stockRouter);
-app.use("/order", checkUserData, orderRouter);
+app.use("/customer", customerRouter);
+app.use("/supplier", supplierRouter);
+app.use("/stock", stockRouter);
+app.use("/order", orderRouter);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found")); //The pages other than mentioned above requests occur we can pass it as a error 404 with message Page Not Found
