@@ -93,7 +93,7 @@ const Home = () => {
       ) : (
         <div className="w-full flex items-center flex-col">
           <div className="text-2xl  font-bold flex font-jersey-25">
-            <p>WELCOME TO B2B TRANSACTION MANAGER &nbsp;</p>
+            <p>WELCOME TO B2B TRANSACTION MANAGER! &nbsp;</p>
             <img src={transactionManager} alt="" className="w-8" />
           </div>
           <div className="text-xl mb-3 font-bold">

@@ -29,7 +29,10 @@ const dburl = process.env.ATLASDB_URL;
 
 app.use(
   cors({
-    origin: "https://b2b-transaction-manager.netlify.app", // Specify allowed origin
+    origin: [
+      "https://b2b-transaction-manager.netlify.app",
+      "http://localhost:3000",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
     credentials: true, // Allow cookies and credentials
   })
