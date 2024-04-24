@@ -115,7 +115,7 @@ const ViewSupplierTransaction = () => {
                         }
                       >
                         <button className="p-4 mb-5 font-bold bg-green-600 rounded-xl text-white">
-                          See Full Details of Supplier
+                          See Full Details of Party
                         </button>
                       </Link>
                     </div>

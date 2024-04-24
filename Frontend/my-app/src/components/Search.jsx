@@ -6,7 +6,10 @@ import LoginShow from "./LoginShow";
 import * as XLSX from "xlsx";
 import Loading from "../utils/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDownload,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Search = () => {
   const { loggedInUserId } = useContext(UserContext);
@@ -160,7 +163,8 @@ const Search = () => {
                 className="rounded-xl px-4 py-2 bg-red-600 text-white hover:opacity-50"
                 onClick={generateExcelData}
               >
-                Download Data as Excel  &nbsp; <FontAwesomeIcon icon={faDownload} />
+                Download Data as Excel &nbsp;{" "}
+                <FontAwesomeIcon icon={faDownload} />
               </button>
             </div>
           </div>
@@ -243,7 +247,7 @@ const Search = () => {
             <div className="flex justify-between text-white bg-gray-600 mb-2">
               <p className="w-[7.5%]  px-4 text-center border-r-4">Date</p>
               <p className="w-[15.5%]  px-4 text-center border-r-4">Name</p>
-              <p className="w-[7.5%]  px-4 text-center border-r-4">C/S</p>
+              <p className="w-[9%]  px-4 text-center border-r-4">P/S</p>
               <p className="w-[15%]  px-4 text-center border-r-4">
                 Transaction Type
               </p>
@@ -254,7 +258,7 @@ const Search = () => {
               <p className="w-[15%]  px-4 text-center border-r-4">
                 Credit/Purchase Amount
               </p>
-              <p className="w-[10%]  px-4 text-center ">View</p>
+              <p className="w-[8.5%]  px-4 text-center ">View</p>
             </div>
             {Object.values(requestedData)
               .sort(function (a, b) {
@@ -271,9 +275,10 @@ const Search = () => {
                     {trans.date.substring(0, 10)}
                   </p>
                   <p className="w-[15.5%] font-bold   border-r-4">
-                    {trans?.custDetails?.name?.substring(0, 17)||trans?.supplierDetails?.name?.substring(0, 17)}
+                    {trans?.custDetails?.name?.substring(0, 17) ||
+                      trans?.supplierDetails?.name?.substring(0, 17)}
                   </p>
-                  <p className="w-[7.5%] font-bold text-center   border-r-4">
+                  <p className="w-[9%] font-bold    border-r-4">
                     {trans.transType === "Debit&Credit" ||
                     trans.transType === "Credit" ||
                     trans.transType === "Debit"
@@ -295,7 +300,7 @@ const Search = () => {
                   {trans.transType === "Debit&Credit" ||
                   trans.transType === "Credit" ||
                   trans.transType === "Debit" ? (
-                    <p className="w-[10%] font-bold text-white text-center">
+                    <p className="w-[8.5%] font-bold text-white text-center">
                       <Link to={"/viewtransaction/" + trans._id}>
                         <button className="rounded-xl bg-green-600 px-3">
                           View
@@ -303,7 +308,7 @@ const Search = () => {
                       </Link>
                     </p>
                   ) : (
-                    <p className="w-[10%] font-bold text-white text-center">
+                    <p className="w-[8.5%] font-bold text-white text-center">
                       <Link to={"/viewSupplierTransaction/" + trans._id}>
                         <button className="rounded-xl bg-green-600 px-3">
                           View

@@ -111,7 +111,7 @@ const ViewTransaction = () => {
                         to={"/ViewParty/" + transactionData?.custDetails?._id}
                       >
                         <button className="p-4 bg-green-600 text-white rounded-xl">
-                          See Full Details of Customer
+                          See Full Details of Party
                         </button>
                       </Link>
                     </div>
