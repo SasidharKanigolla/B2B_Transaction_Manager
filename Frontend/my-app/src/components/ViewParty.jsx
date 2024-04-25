@@ -144,6 +144,15 @@ const ViewParty = () => {
                         GST Number : {customerData?.gst}
                       </p>
                       <p className="font-bold text-lg">
+                        Bank Name : {customerData?.bankName}
+                      </p>
+                      <p className="font-bold text-lg">
+                        Bank Account Number : {customerData?.bankAccountNumber}
+                      </p>
+                      <p className="font-bold text-lg">
+                        Bank IFSC : {customerData?.bankIfsc}
+                      </p>
+                      <p className="font-bold text-lg">
                         Address : {customerData?.address}
                       </p>
                       <p className="font-bold text-lg">
@@ -168,7 +177,7 @@ const ViewParty = () => {
                       <div className="w-[50%]">
                         <input
                           type="password"
-                          placeholder="Enter Password to Delete Party Data"
+                          placeholder="Enter Transaction Password to Delete Party Data"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           className="w-full font-bold border bg-gray-200 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"

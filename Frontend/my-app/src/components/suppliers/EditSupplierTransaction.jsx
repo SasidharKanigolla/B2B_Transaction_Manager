@@ -469,7 +469,7 @@ const EditSupplierTransaction = () => {
                                   onChange={(e) =>
                                     handleChangeDetail(e, index, "quantity")
                                   }
-                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200 "
+                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200 text-end"
                                 />
                                 <input
                                   type="number"
@@ -483,7 +483,7 @@ const EditSupplierTransaction = () => {
                                   onChange={(e) =>
                                     handleChangeDetail(e, index, "pricePerUnit")
                                   }
-                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200 "
+                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200 text-end"
                                 />
                                 <input
                                   type="number"
@@ -495,7 +495,7 @@ const EditSupplierTransaction = () => {
                                   onChange={(e) =>
                                     handleChangeDetail(e, index, "amount")
                                   }
-                                  className="w-[25%]  border-gray-400 bg-gray-200 "
+                                  className="w-[25%]  border-gray-400 bg-gray-200 text-end"
                                 />
                                 <div className="flex justify-center ">
                                   <button
@@ -526,7 +526,7 @@ const EditSupplierTransaction = () => {
                               </button>
                             </Link>
                           </div>
-                          <div className="font-bold">
+                          <div className="font-bold flex justify-between">
                             <p>
                               Total Purchase Quantity :{" "}
                               {formData.totalPurchaseQuantity}

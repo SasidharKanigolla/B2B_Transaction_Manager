@@ -192,7 +192,9 @@ const NewStockItem = () => {
                     type="number"
                     name="quantity"
                     placeholder="Quantity"
-                    value={newStockItem.quantity}
+                    value={
+                      newStockItem.quantity === 0 ? "" : newStockItem.quantity
+                    }
                     onChange={handleChange}
                     required
                     className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
@@ -209,7 +211,11 @@ const NewStockItem = () => {
                     type="number"
                     name="pricePerUnit"
                     placeholder="Price"
-                    value={newStockItem.pricePerUnit}
+                    value={
+                      newStockItem.pricePerUnit === 0
+                        ? ""
+                        : newStockItem.pricePerUnit
+                    }
                     onChange={handleChange}
                     required
                     className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
@@ -226,7 +232,7 @@ const NewStockItem = () => {
                     type="number"
                     name="amount"
                     placeholder="Price"
-                    value={newStockItem.amount}
+                    value={newStockItem.amount === 0 ? "" : newStockItem.amount}
                     onChange={handleChange}
                     readOnly
                     className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"

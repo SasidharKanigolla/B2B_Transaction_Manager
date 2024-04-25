@@ -138,7 +138,7 @@ const NewOrder = () => {
     seterrmsg("");
     e.preventDefault();
     if (!selectedCustomer) {
-      alert("Please select a customer.");
+      alert("Please select a Party.");
       setIsLoading(false);
       return;
     }
@@ -200,7 +200,7 @@ const NewOrder = () => {
                       value={searchQuery}
                       onChange={(e) => handleSearch(e.target.value)}
                       className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
-                      placeholder="Search customer by name"
+                      placeholder="Search Party by name"
                     />
                     {searchQuery &&
                       customersData
@@ -230,7 +230,7 @@ const NewOrder = () => {
                       htmlFor="selectedCustomer"
                       className="flex font-semibold text-xl"
                     >
-                      Selected Customer <p className="text-red-600">*</p>:
+                      Selected Party <p className="text-red-600">*</p>:
                     </label>
                     <input
                       type="text"
@@ -343,7 +343,7 @@ const NewOrder = () => {
                             type="number"
                             name={`quantity_${index}`}
                             placeholder="Quantity"
-                            value={detail.quantity}
+                            value={detail.quantity === 0 ? "" : detail.quantity}
                             onChange={(e) =>
                               handleChangeDetail(e, index, "quantity")
                             }
@@ -353,7 +353,11 @@ const NewOrder = () => {
                             type="number"
                             name={`pricePerUnit_${index}`}
                             placeholder="Price Per Unit"
-                            value={detail.pricePerUnit}
+                            value={
+                              detail.pricePerUnit === 0
+                                ? ""
+                                : detail.pricePerUnit
+                            }
                             onChange={(e) =>
                               handleChangeDetail(e, index, "pricePerUnit")
                             }
@@ -363,7 +367,7 @@ const NewOrder = () => {
                             type="number"
                             name={`amount_${index}`}
                             placeholder="Amount"
-                            value={detail.amount}
+                            value={detail.amount === 0 ? "" : detail.amount}
                             onChange={(e) =>
                               handleChangeDetail(e, index, "amount")
                             }

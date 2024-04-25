@@ -256,7 +256,7 @@ const ViewStock = () => {
                   <div className="w-[50%]">
                     <input
                       type="password"
-                      placeholder="Enter Password to Delete Stock"
+                      placeholder="Enter Transaction Password to Delete Stock"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="w-full font-bold border bg-gray-200 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
@@ -316,7 +316,11 @@ const ViewStock = () => {
                           type="number"
                           name="quantity"
                           placeholder="Quantity"
-                          value={newStockItem.quantity}
+                          value={
+                            newStockItem.quantity === 0
+                              ? ""
+                              : newStockItem.quantity
+                          }
                           onChange={handleChange}
                           required
                           className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
@@ -333,7 +337,11 @@ const ViewStock = () => {
                           type="number"
                           name="pricePerUnit"
                           placeholder="Price"
-                          value={newStockItem.pricePerUnit}
+                          value={
+                            newStockItem.pricePerUnit === 0
+                              ? ""
+                              : newStockItem.pricePerUnit
+                          }
                           onChange={handleChange}
                           required
                           className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
@@ -350,7 +358,9 @@ const ViewStock = () => {
                           type="number"
                           name="amount"
                           placeholder="Price"
-                          value={newStockItem.amount}
+                          value={
+                            newStockItem.amount === 0 ? "" : newStockItem.amount
+                          }
                           onChange={handleChange}
                           readOnly
                           className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
@@ -408,7 +418,11 @@ const ViewStock = () => {
                           {item.date?.substring(0, 10)}
                         </p>
                         <p className="w-1/6 bg-gray-400 border-r-4 my-0.5 ">
-                          {item?.transaction_type}
+                          {item?.transaction_type === "Customer"
+                            ? "Sales"
+                            : item?.transaction_type === "Supplier"
+                            ? "Purchase"
+                            : item?.transaction_type}
                         </p>
                         <p className="w-1/6 bg-gray-400 border-r-4 my-0.5 text-end">
                           {item?.quantity}

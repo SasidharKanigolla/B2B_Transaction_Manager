@@ -92,19 +92,15 @@ const ViewSupplierTransaction = () => {
               {transactionData.length !== 0 ? (
                 <div className="flex flex-col items-center">
                   {/* {flashMessage && <div className="flash-message">{flashMessage}</div>} */}
-                  <h1 className="font-bold text-3xl mb-10">Supplier Details</h1>
+                  <h1 className="font-bold text-3xl mb-10">Party Details</h1>
                   <div className="w-[80%] bg-gray-200 rounded-xl py-8 flex flex-col mb-5 items-center font-bold">
                     <p>
-                      Supplier Name :{" "}
+                      Party Name :{" "}
                       {transactionData?.supplierDetails?.name.substring(0, 60)}
                     </p>
                     <p>
-                      Supplier Mobile Number :{" "}
+                      Party Mobile Number :{" "}
                       {transactionData?.supplierDetails?.mobile}
-                    </p>
-                    <p>
-                      Broker Name :{" "}
-                      {transactionData?.supplierDetails?.brokerDetails}
                     </p>
                   </div>
                   {transactionData.length !== 0 ? (
@@ -219,7 +215,7 @@ const ViewSupplierTransaction = () => {
                       <div className="w-[50%]">
                         <input
                           type="password"
-                          placeholder="Enter Password to Delete Transaction"
+                          placeholder="Enter Transaction Password to Delete Transaction"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           className="w-full border bg-gray-200 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"

@@ -212,7 +212,7 @@ const Search = () => {
             <div className="flex   font-bold ">
               <div className="w-full border-r-2 ">
                 <div className=" text-center border-b-4 bg-gray-400 w-full">
-                  Supplier Transactions
+                  Purchase/Payment-out Transactions
                 </div>
                 <div className="flex justify-between font-bold border-b-4">
                   <p className="  text-center border-r-2 bg-gray-400 w-[34.33%]">
@@ -228,7 +228,7 @@ const Search = () => {
               </div>
               <div className=" font-bold w-full border-l-2">
                 <div className="  text-center border-b-4 bg-gray-400 w-full">
-                  Customer Transactions
+                  Sales/Payment-in Transactions
                 </div>
                 <div className="flex justify-between font-bold mb-3">
                   <p className="  text-center border-r-2 bg-gray-400 w-[34.33%]">

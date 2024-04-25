@@ -201,7 +201,7 @@ const CustomerHome = () => {
           <div className="fixed right-10 bottom-10">
             <Link to="/addNewTransaction">
               <button className="rounded-xl p-4 bg-red-600 text-white hover:opacity-50">
-                Add Sale/Payment Transaction
+                Add Sale/Payment-In Transaction
               </button>
             </Link>
           </div>

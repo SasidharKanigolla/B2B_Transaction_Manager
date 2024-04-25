@@ -201,7 +201,7 @@ const NewTransaction = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!selectedCustomer) {
-      alert("Please select a customer.");
+      alert("Please select a Party.");
       return; // Prevent further execution of the function
     }
     // const updatedFormData = { ...formData };
@@ -323,7 +323,7 @@ const NewTransaction = () => {
                         value={searchQuery}
                         onChange={(e) => handleSearch(e.target.value)}
                         className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
-                        placeholder="Search customer by name"
+                        placeholder="Search Party by name"
                       />
                       {/* Display matched customer names */}
                       {searchQuery &&
@@ -354,7 +354,7 @@ const NewTransaction = () => {
                         htmlFor="selectedCustomer"
                         className="flex font-semibold text-xl"
                       >
-                        Selected Customer <p className="text-red-600">*</p>:
+                        Selected Party <p className="text-red-600">*</p>:
                       </label>
                       <input
                         type="text"
@@ -504,7 +504,9 @@ const NewTransaction = () => {
                                 type="number"
                                 name={`quantity_${index}`}
                                 placeholder="Quantity"
-                                value={detail.quantity}
+                                value={
+                                  detail.quantity === 0 ? "" : detail.quantity
+                                }
                                 onChange={(e) =>
                                   handleChangeDetail(e, index, "quantity")
                                 }
@@ -514,7 +516,11 @@ const NewTransaction = () => {
                                 type="number"
                                 name={`pricePerUnit_${index}`}
                                 placeholder="Price Per Unit"
-                                value={detail.pricePerUnit}
+                                value={
+                                  detail.pricePerUnit === 0
+                                    ? ""
+                                    : detail.pricePerUnit
+                                }
                                 onChange={(e) =>
                                   handleChangeDetail(e, index, "pricePerUnit")
                                 }
@@ -524,7 +530,7 @@ const NewTransaction = () => {
                                 type="number"
                                 name={`amount_${index}`}
                                 placeholder="Amount"
-                                value={detail.amount}
+                                value={detail.amount === 0 ? "" : detail.amount}
                                 onChange={(e) =>
                                   handleChangeDetail(e, index, "amount")
                                 }
@@ -559,7 +565,22 @@ const NewTransaction = () => {
                           </button>
                         </Link>
                       </div>
-                      <p className="text-center font-bold">
+                      <div className=" mb-4  flex justify-around text-center bg-gray-200 ">
+                        <p className="font-bold w-1/4 ">
+                          Total transaction Quantity:
+                        </p>
+                        <p className="font-bold  w-1/4 text-end px-4 border-r-4 border-gray-600">
+                          {formData.totalQuantity}
+                        </p>
+                        <p className="font-bold w-1/4 text-center">
+                          Total transaction Amount:
+                        </p>
+                        <p className="font-bold w-1/4 text-end border-r-4 px-4">
+                          {formData.totalDebitAmount}
+                        </p>
+                        <p className="font-bold px-6 text-gray-600"></p>
+                      </div>
+                      {/* <p className="text-center font-bold">
                         Or Enter Total Credit Quantity and Total Price
                       </p>
 
@@ -590,7 +611,7 @@ const NewTransaction = () => {
                         <p className="font-bold">
                           Total Credit Amount: {formData.totalDebitAmount}
                         </p>
-                      </div>
+                      </div> */}
                     </fieldset>
                   ) : (
                     ""
@@ -672,7 +693,7 @@ const NewTransaction = () => {
                       >
                         +
                       </button>
-                      <div className="w-[100%] ">
+                      {/* <div className="w-[100%] ">
                         <p className="text-center font-bold">
                           Or Enter Total Debit Total Price
                         </p>
@@ -689,7 +710,7 @@ const NewTransaction = () => {
                         <p className="font-bold w-[50%] ">
                           Total Debit Amount: {formData?.totalCreditAmount}
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   ) : (
                     ""

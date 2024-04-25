@@ -23,6 +23,9 @@ const EditParty = () => {
     name: "",
     mobile: "",
     gst: "",
+    bankName: "",
+    bankAccountNumber: 0,
+    bankIfsc: "",
     address: "",
   });
   useEffect(() => {
@@ -69,7 +72,7 @@ const EditParty = () => {
 
     if (customerExists) {
       setIsLoading(false);
-      alert("Customer already exists");
+      alert("Party name already exists");
       return; // Prevent form submission
     }
 
@@ -179,6 +182,61 @@ const EditParty = () => {
                           className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
                         />
                       </div>
+                      {/* Changed Here */}
+                      <div className="mb-5">
+                        <label
+                          htmlFor="bankName"
+                          className="flex font-semibold text-xl "
+                        >
+                          Bank Name
+                        </label>
+                        <input
+                          type="text"
+                          name="bankName"
+                          id="bankName"
+                          value={requiredCustomer?.bankName}
+                          onChange={handleInputChange}
+                          className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
+                          // required
+                        />
+                      </div>
+                      <div className="flex w-full">
+                        <div className="mb-5 w-[70%] mr-5">
+                          <label
+                            htmlFor="bankAccountNumber"
+                            className="flex font-semibold text-xl "
+                          >
+                            Bank Account Number
+                          </label>
+                          <input
+                            type="number"
+                            name="bankAccountNumber"
+                            id="bankAccountNumber"
+                            value={requiredCustomer?.bankAccountNumber}
+                            onChange={handleInputChange}
+                            className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
+                            // required
+                          />
+                        </div>
+                        <div className="mb-5 w-[30%]">
+                          <label
+                            htmlFor="bankIfsc"
+                            className="flex font-semibold text-xl "
+                          >
+                            IFSC CODE
+                          </label>
+                          <input
+                            type="text"
+                            name="bankIfsc"
+                            id="bankIfsc"
+                            value={requiredCustomer?.bankIfsc}
+                            onChange={handleInputChange}
+                            className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
+                            // required
+                          />
+                        </div>
+                      </div>
+                      {/* Changed Here */}
                       <div className="mb-4">
                         <label
                           htmlFor="address"
@@ -199,7 +257,8 @@ const EditParty = () => {
                       {requiredCustomer ? (
                         <div className="flex justify-center mb-40">
                           <button className="bg-red-600 text-white p-4 rounded-xl">
-                            Submit <FontAwesomeIcon icon={faArrowRightToBracket} />
+                            Submit{" "}
+                            <FontAwesomeIcon icon={faArrowRightToBracket} />
                           </button>
                         </div>
                       ) : (

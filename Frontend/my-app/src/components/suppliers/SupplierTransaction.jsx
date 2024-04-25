@@ -187,7 +187,7 @@ const SupplierTransaction = () => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
     if (!selectedSupplier) {
-      alert("Please select a supplier.");
+      alert("Please select a Party.");
       return; // Prevent further execution of the function
     }
     formData.name = selectedSupplier.name;
@@ -209,7 +209,7 @@ const SupplierTransaction = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to create new supplier transaction");
+        throw new Error("Failed to create new Party transaction");
       }
 
       const transactionData = await response.json();
@@ -335,7 +335,7 @@ const SupplierTransaction = () => {
                           value={searchQuery}
                           onChange={(e) => handleSearch(e.target.value)}
                           className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
-                          placeholder="Search Supplier by name"
+                          placeholder="Search Party by name"
                         />
                         {/* Display matched customer names */}
                         {searchQuery &&
@@ -369,7 +369,7 @@ const SupplierTransaction = () => {
                         htmlFor="selectedSupplier"
                         className="flex font-semibold text-xl"
                       >
-                        Selected Supplier <p className="text-red-600">*</p>:
+                        Selected Party <p className="text-red-600">*</p>:
                       </label>
                       <input
                         type="text"
@@ -516,7 +516,7 @@ const SupplierTransaction = () => {
                               onChange={(e) =>
                                 handleChangeDetail(e, index, "quantity")
                               }
-                              className="w-[25%] border-r-4 border-gray-400 bg-gray-200 "
+                              className="w-[25%] border-r-4 border-gray-400 bg-gray-200 text-end"
                             />
                             <input
                               type="number"
@@ -530,7 +530,7 @@ const SupplierTransaction = () => {
                               onChange={(e) =>
                                 handleChangeDetail(e, index, "pricePerUnit")
                               }
-                              className="w-[25%] border-r-4 border-gray-400 bg-gray-200 "
+                              className="w-[25%] border-r-4 border-gray-400 bg-gray-200 text-end"
                             />
                             <input
                               type="number"
@@ -540,7 +540,7 @@ const SupplierTransaction = () => {
                               onChange={(e) =>
                                 handleChangeDetail(e, index, "amount")
                               }
-                              className="w-[25%]  border-gray-400 bg-gray-200 "
+                              className="w-[25%]  border-gray-400 bg-gray-200 text-end"
                             />
                             <div className="flex justify-center ">
                               <button

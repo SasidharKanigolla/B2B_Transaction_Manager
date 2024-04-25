@@ -93,15 +93,15 @@ const ViewTransaction = () => {
               {transactionData.length !== 0 ? (
                 <div>
                   <h1 className="text-center font-bold text-3xl mb-10">
-                    Customer Details
+                    Party Details
                   </h1>
                   <div className="m-4 flex justify-center">
                     <div className="w-[80%] flex flex-col items-center bg-gray-200 p-10 rounded - xl mr-5">
                       <p className="font-bold text-lg">
-                        Name : {transactionData?.custDetails?.name}
+                        Party Name : {transactionData?.custDetails?.name}
                       </p>
                       <p className="font-bold text-lg">
-                        Mobile : {transactionData.custDetails?.mobile}
+                        Party Mobile : {transactionData.custDetails?.mobile}
                       </p>
                     </div>
                   </div>
@@ -220,7 +220,7 @@ const ViewTransaction = () => {
                           <div className="w-[50%]">
                             <input
                               type="password"
-                              placeholder="Enter Password to Delete Transaction"
+                              placeholder="Enter Transaction Password to Delete Transaction"
                               value={password}
                               onChange={(e) => setPassword(e.target.value)}
                               className="w-full font-bold border bg-gray-200 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"

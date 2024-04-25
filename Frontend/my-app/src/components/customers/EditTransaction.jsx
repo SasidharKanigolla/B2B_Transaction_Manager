@@ -499,31 +499,39 @@ const EditTransaction = () => {
                                   type="number"
                                   name={`quantity_${index}`}
                                   placeholder="Quantity"
-                                  value={detail.quantity}
+                                  value={
+                                    detail.quantity === 0 ? "" : detail.quantity
+                                  }
                                   onChange={(e) =>
                                     handleChangeDetail(e, index, "quantity")
                                   }
-                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200 "
+                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200 text-end"
                                 />
                                 <input
                                   type="number"
                                   name={`pricePerUnit_${index}`}
                                   placeholder="Price Per Unit"
-                                  value={detail.pricePerUnit}
+                                  value={
+                                    detail.pricePerUnit === 0
+                                      ? ""
+                                      : detail.pricePerUnit
+                                  }
                                   onChange={(e) =>
                                     handleChangeDetail(e, index, "pricePerUnit")
                                   }
-                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200 "
+                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200 text-end"
                                 />
                                 <input
                                   type="number"
                                   name={`amount_${index}`}
                                   placeholder="Amount"
-                                  value={detail.amount}
+                                  value={
+                                    detail.amount === 0 ? "" : detail.amount
+                                  }
                                   onChange={(e) =>
                                     handleChangeDetail(e, index, "amount")
                                   }
-                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200  "
+                                  className="w-[25%] border-r-4 border-gray-400 bg-gray-200  text-end"
                                 />
                                 <div className="flex justify-center">
                                   <button
@@ -554,7 +562,22 @@ const EditTransaction = () => {
                               </button>
                             </Link>
                           </div>
-                          <div className=" mb-4">
+                          <div className=" mb-4  flex justify-around text-center bg-gray-200 ">
+                            <p className="font-bold w-1/4 ">
+                              Total transaction Quantity:
+                            </p>
+                            <p className="font-bold  w-1/4 text-end px-4 border-r-4 border-gray-600">
+                              {formData.totalQuantity}
+                            </p>
+                            <p className="font-bold w-1/4 text-center">
+                              Total transaction Amount:
+                            </p>
+                            <p className="font-bold w-1/4 text-end border-r-4 px-4">
+                              {formData.totalDebitAmount}
+                            </p>
+                            <p className="font-bold px-6 text-gray-600"></p>
+                          </div>
+                          {/* <div className=" mb-4">
                             <input
                               type="number"
                               id="totalQuantity"
@@ -581,7 +604,7 @@ const EditTransaction = () => {
                             <p className="font-bold">
                               Total Amount: {formData.totalDebitAmount}
                             </p>
-                          </div>
+                          </div> */}
                         </fieldset>
                       ) : (
                         ""
@@ -648,7 +671,7 @@ const EditTransaction = () => {
                           >
                             +
                           </button>
-                          <div className="w-[100%] ">
+                          {/* <div className="w-[100%] ">
                             <p className="text-center font-bold">
                               Or Enter Total Debit Total Price
                             </p>
@@ -665,7 +688,7 @@ const EditTransaction = () => {
                             <p className="font-bold w-[50%] ">
                               Total Debit Amount: {formData?.totalCreditAmount}
                             </p>
-                          </div>
+                          </div> */}
                         </div>
                       ) : (
                         ""

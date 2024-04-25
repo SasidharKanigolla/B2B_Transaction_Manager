@@ -169,11 +169,11 @@ const ViewOrders = () => {
                     </h1> */}
                         <div className="flex justify-between">
                           <p className="font-bold">
-                            Name of the Customer: {data?.custDetails?.name}
+                            Name of the Party: {data?.custDetails?.name}
                           </p>
                           <Link to={"/ViewParty/" + data?.custDetails?._id}>
                             <button className="bg-green-600 text-white px-4 py-1 rounded-md">
-                              See Full Details of the Customer
+                              See Full Details of the Party
                             </button>
                           </Link>
                         </div>
