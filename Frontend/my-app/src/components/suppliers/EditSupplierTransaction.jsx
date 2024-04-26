@@ -5,12 +5,18 @@ import LoginShow from "../LoginShow";
 import UserContext from "../../utils/UserContext";
 import NotOwner from "../../utils/NotOwner";
 import Loading from "../../utils/Loading";
-
 import TransactionSaved from "../../utils/TransactionSaved";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
-let dateNow;
+// let dateNow;
+const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 const EditSupplierTransaction = () => {
   const { loggedInUserId } = useContext(UserContext);
 
@@ -83,7 +89,7 @@ const EditSupplierTransaction = () => {
       const suppl = data2.filter((item) => {
         return item.owner === loggedInUserId?._id;
       });
-      dateNow = data?.date.substring(0, 10);
+      // dateNow = data?.date.substring(0, 10);
       setSupplierData(suppl);
       setFormData(data);
 
@@ -347,13 +353,13 @@ const EditSupplierTransaction = () => {
                             htmlFor="date"
                             className="block font-semibold text-xl"
                           >
-                            Original Transaction Date: {"" + dateNow}
+                            Original Transaction Date:
                           </label>
                           <input
                             type="date"
                             id="date"
                             name="date"
-                            value={formData.date}
+                            value={formatDate(new Date(formData.date))}
                             onChange={handleChange}
                             className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
                             // required

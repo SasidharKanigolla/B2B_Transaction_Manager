@@ -11,7 +11,7 @@ const custSchema = new Schema(
     },
     mobile: {
       type: Number,
-      required: true,
+      // required: true,
       unique: true,
     },
     gst: {

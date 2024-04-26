@@ -21,6 +21,9 @@ const orderSchema = new Schema(
       type: Date,
       default: Date(Date.now()),
     },
+    description: {
+      type: String,
+    },
     deliveryDate: {
       type: Date,
       default: Date(Date.now()),

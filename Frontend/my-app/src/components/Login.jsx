@@ -177,7 +177,7 @@ const Login = () => {
             Logged In Successfully
           </h1>
           <h3 className="text-center">
-            Page will be redirected automatically in 1 seconds
+            Page will be redirected automatically in 1 second
           </h3>
         </div>
       )}

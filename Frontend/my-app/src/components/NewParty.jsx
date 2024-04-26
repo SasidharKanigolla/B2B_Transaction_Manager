@@ -147,14 +147,14 @@ const NewParty = () => {
                       className="flex font-semibold text-xl"
                     >
                       Mobile Number
-                      <p className="text-red-600">*</p>
+                      {/* <p className="text-red-600">*</p> */}
                     </label>
                     <input
                       type="number"
                       name="mobile"
                       id="mobile"
                       className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
-                      required
+                      // required
                     />
                   </div>
                   <div className="mb-5">

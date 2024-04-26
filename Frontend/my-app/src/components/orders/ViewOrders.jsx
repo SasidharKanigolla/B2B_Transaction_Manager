@@ -206,6 +206,12 @@ const ViewOrders = () => {
                           } rounded-xl w-5 h-5`}
                         ></div>
                       </div>
+                      <div>
+                        <p className="font-bold my-2 w-full">Description:</p>
+                        <p className="w-full break-words">
+                          {data?.description}
+                        </p>
+                      </div>
                       <div className="bg-black h-0.5 mt-3"></div>
                       <div>
                         <h1 className="text-center font-bold">Order Details</h1>

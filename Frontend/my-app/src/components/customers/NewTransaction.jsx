@@ -8,7 +8,13 @@ import TransactionSaved from "../../utils/TransactionSaved";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
-const dateNow = "" + new Date(Date.now());
+// const dateNow = "" + new Date(Date.now());
+const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
 const NewTransaction = () => {
   const { loggedInUserId, custInvoice, setCustInvoice } =
     useContext(UserContext);
@@ -26,7 +32,7 @@ const NewTransaction = () => {
   const [formData, setFormData] = useState({
     name: "",
     transType: "",
-    date: new Date(),
+    date: formatDate(new Date()),
     credit: [
       {
         creditName: "",
@@ -414,7 +420,7 @@ const NewTransaction = () => {
                         htmlFor="date"
                         className="block font-semibold text-xl"
                       >
-                        Default Date - {dateNow.substring(3, 15)}
+                        Date:
                       </label>
                       <input
                         type="date"

@@ -8,18 +8,25 @@ import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import TransactionSaved from "../../utils/TransactionSaved";
 import Loading from "../../utils/Loading";
 
-const dateNow = "" + new Date(Date.now());
+const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 const NewOrder = () => {
   const { loggedInUserId } = useContext(UserContext);
   const [formData, setFormData] = useState({
     name: "",
     owner: loggedInUserId,
     custDetails: null,
-    orderDate: new Date(),
-    deliveryDate: new Date(),
+    orderDate: formatDate(new Date()),
+    deliveryDate: formatDate(new Date()),
     orderDetails: [
       { productName: "", quantity: 0, pricePerUnit: 0, amount: 0 },
     ],
+    description: "",
     status: "",
     totalQuantity: 0,
     totalAmount: 0,
@@ -258,7 +265,7 @@ const NewOrder = () => {
                       htmlFor="orderDate"
                       className="block font-semibold text-xl"
                     >
-                      Order Date - {dateNow.substring(3, 15)}
+                      Order Date:
                     </label>
                     <input
                       type="date"
@@ -275,7 +282,7 @@ const NewOrder = () => {
                       htmlFor="deliveryDate"
                       className="block font-semibold text-xl"
                     >
-                      Delivery Expected Date - {dateNow.substring(3, 15)}
+                      Delivery Expected Date:
                     </label>
                     <input
                       type="date"
@@ -287,6 +294,24 @@ const NewOrder = () => {
                       // required
                     />
                   </div>
+                </div>
+                <div className="mb-5 mr-2">
+                  <label
+                    htmlFor="description"
+                    className="block font-semibold text-xl"
+                  >
+                    Description:
+                  </label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    cols="30"
+                    rows="3"
+                    value={formData.description}
+                    onChange={handleChange}
+                    className="w-full border bg-gray-100 rounded-md py-2 px-3 mt-1 focus:outline-none focus:border-blue-500"
+                    placeholder="Enter Order Description"
+                  ></textarea>
                 </div>
 
                 <fieldset>

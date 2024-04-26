@@ -114,7 +114,7 @@ const Home = () => {
             {/* <Link to={"/customerHome"} className="w-full "> */}
             <div className=" bg-gray-200 p-8 mr-5 rounded-xl w-full">
               <h1 className="text-center font-bold text-xl my-4">
-                Total Party Due Amount (Payables - Receivables)
+                Total Party Due Amount (Receivables - Payables)
               </h1>
               <p className="text-center text-lg font-bold">
                 {show === true ? custSum + "/-" : " *****"}

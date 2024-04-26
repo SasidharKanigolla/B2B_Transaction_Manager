@@ -9,7 +9,14 @@ import TransactionSaved from "../../utils/TransactionSaved";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 
-const dateNow = "" + new Date(Date.now());
+// const dateNow = "" + new Date(Date.now());
+
+const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
 
 const SupplierTransaction = () => {
   const { loggedInUserId } = useContext(UserContext);
@@ -26,7 +33,7 @@ const SupplierTransaction = () => {
 
   const [formData, setFormData] = useState({
     name: "",
-    date: new Date(),
+    date: formatDate(new Date()),
     bill_no: "",
     transType: "",
     purchaseDetails: [],
@@ -400,7 +407,7 @@ const SupplierTransaction = () => {
                         htmlFor="date"
                         className="block font-semibold text-xl"
                       >
-                        Default Date - {dateNow.substring(4, 15)}:
+                        Date:
                       </label>
                       <input
                         type="date"

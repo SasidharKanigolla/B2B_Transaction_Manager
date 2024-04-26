@@ -14,6 +14,7 @@ module.exports.getOrders = async (req, res) => {
 module.exports.newOrder = async (req, res) => {
   try {
     // Validate input
+    console.log(req.body);
     const { owner, name } = req.body;
     if (!owner || !name) {
       return res
@@ -32,6 +33,7 @@ module.exports.newOrder = async (req, res) => {
     }
     const newOrder = new Order({ ...req.body, custDetails: custDet });
     const savedOrder = await newOrder.save();
+    console.log(savedOrder);
     res.status(201).json(savedOrder);
   } catch (error) {
     console.log(error);
