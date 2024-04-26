@@ -15,6 +15,7 @@ import Sales from "./Images/Sales.png";
 import Purchase from "./Images/purchase.png";
 import Stock from "./Images/Stock.png";
 import Others from "./Images/Others.png";
+import Orders from "./Images/orders.png";
 import transactionManager from "./Images/transaction Manager.png";
 
 const Home = () => {
@@ -147,88 +148,93 @@ const Home = () => {
           </div>
           <div className="w-full  my-5   bg-gray-100">
             <h1 className="text-center my-3 text-2xl font-bold">Shortcuts</h1>
-            <div className="flex justify-between">
-              <div className="w-1/5 rounded-md  text-start mx-2">
-                <div className="font-bold text-2xl flex justify-center">
-                  <h1>Sales &nbsp;</h1>
-                  <img src={Sales} alt="" className="w-9" />
+            <div>
+              <div className="flex justify-between">
+                <div className="w-1/3 rounded-md  text-start mx-2">
+                  <div className="font-bold text-2xl flex justify-center">
+                    <h1>Sales &nbsp;</h1>
+                    <img src={Sales} alt="" className="w-9" />
+                  </div>
+                  <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
+                    <Link to={"/CustomerHome"}>
+                      <div className="flex justify-between px-2 py-0.5">
+                        <p>Sales DashBoard</p>
+                        <p>
+                          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                        </p>
+                      </div>
+                    </Link>
+                  </p>
+                  <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
+                    <Link to={"/addNewTransaction"}>
+                      <div className="flex justify-between px-2 py-0.5">
+                        <p>New Sales/Payment-In Transaction</p>
+                        <p>
+                          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                        </p>
+                      </div>
+                    </Link>
+                  </p>
                 </div>
-                <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
-                  <Link to={"/CustomerHome"}>
-                    <div className="flex justify-between px-2 py-0.5">
-                      <p>Sales DashBoard</p>
-                      <p>
-                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                      </p>
-                    </div>
-                  </Link>
-                </p>
-                <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
-                  <Link to={"/addNewTransaction"}>
-                    <div className="flex justify-between px-2 py-0.5">
-                      <p>New Sales/Payment-In Transaction</p>
-                      <p>
-                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                      </p>
-                    </div>
-                  </Link>
-                </p>
-              </div>
-              <div className="w-1/5 rounded-md text-start   mx-2 ">
-                <div className="font-bold text-2xl flex justify-center">
-                  <h1>Purchase &nbsp;</h1>
-                  <img src={Purchase} alt="" className="w-8" />
+                <div className="w-1/3 rounded-md text-start   mx-2 ">
+                  <div className="font-bold text-2xl flex justify-center">
+                    <h1>Purchase &nbsp;</h1>
+                    <img src={Purchase} alt="" className="w-8" />
+                  </div>
+                  <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
+                    <Link to={"/SupplierHome"}>
+                      <div className="flex justify-between px-2 py-0.5">
+                        <p>Purchase DashBoard</p>
+                        <p>
+                          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                        </p>
+                      </div>
+                    </Link>
+                  </p>
+                  <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
+                    <Link to={"/supplierTransaction"}>
+                      <div className="flex justify-between px-2 py-0.5">
+                        <p className="text-start">
+                          New Purchase/Payment-Out Transaction
+                        </p>
+                        <p>
+                          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                        </p>
+                      </div>
+                    </Link>
+                  </p>
                 </div>
-                <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
-                  <Link to={"/SupplierHome"}>
-                    <div className="flex justify-between px-2 py-0.5">
-                      <p>Purchase DashBoard</p>
-                      <p>
-                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                      </p>
-                    </div>
-                  </Link>
-                </p>
-                <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
-                  <Link to={"/supplierTransaction"}>
-                    <div className="flex justify-between px-2 py-0.5">
-                      <p className="text-start">
-                        New Purchase/Payment-Out Transaction
-                      </p>
-                      <p>
-                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                      </p>
-                    </div>
-                  </Link>
-                </p>
-              </div>
-              <div className="w-1/5 rounded-md  text-start mx-2">
-                <div className="font-bold text-2xl flex justify-center">
-                  <h1>Stock Items &nbsp;</h1>
-                  <img src={Stock} alt="" className="w-8" />
+                <div className="w-1/3 rounded-md  text-start mx-2">
+                  <div className="font-bold text-2xl flex justify-center">
+                    <h1>Stock Items &nbsp;</h1>
+                    <img src={Stock} alt="" className="w-8" />
+                  </div>
+                  <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
+                    <Link to={"/viewStocks"}>
+                      <div className="flex justify-between px-2 py-0.5">
+                        <p>All Stock Items</p>
+                        <p>
+                          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                        </p>
+                      </div>
+                    </Link>
+                  </p>
+                  <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
+                    <Link to={"/NewStock"}>
+                      <div className="flex justify-between px-2 py-0.5">
+                        <p>New Stock Item</p>
+                        <p>
+                          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                        </p>
+                      </div>
+                    </Link>
+                  </p>
                 </div>
-                <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
-                  <Link to={"/viewStocks"}>
-                    <div className="flex justify-between px-2 py-0.5">
-                      <p>All Stock Items</p>
-                      <p>
-                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                      </p>
-                    </div>
-                  </Link>
-                </p>
-                <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
-                  <Link to={"/NewStock"}>
-                    <div className="flex justify-between px-2 py-0.5">
-                      <p>New Stock Item</p>
-                      <p>
-                        <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                      </p>
-                    </div>
-                  </Link>
-                </p>
               </div>
-              <div className="w-1/5 rounded-md  text-start mx-2">
+            </div>
+            <div className="w-full  my-5   bg-gray-100 flex">
+              {" "}
+              <div className="w-1/3 rounded-md  text-start mx-2">
                 <div className="font-bold text-2xl flex justify-center">
                   <h1>Parties &nbsp;</h1>
                   <FontAwesomeIcon icon={faUsers} />
@@ -255,10 +261,10 @@ const Home = () => {
                   </Link>
                 </p>
               </div>
-              <div className="w-1/5 rounded-md  text-start mx-2">
+              <div className="w-1/3 rounded-md  text-start mx-2">
                 <div className="font-bold text-2xl flex justify-center">
-                  <h1>Others &nbsp;</h1>
-                  <img src={Others} alt="" className="w-7 h-7" />
+                  <h1>Orders &nbsp;</h1>
+                  <img src={Orders} alt="" className="w-7 h-7" />
                 </div>
                 <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
                   <Link to={"/ViewOrders"}>
@@ -280,6 +286,12 @@ const Home = () => {
                     </div>
                   </Link>
                 </p>
+              </div>
+              <div className="w-1/3 rounded-md  text-start mx-2">
+                <div className="font-bold text-2xl flex justify-center">
+                  <h1>Others &nbsp;</h1>
+                  <img src={Others} alt="" className="w-7 h-7" />
+                </div>
                 <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
                   <Link to={"/search"}>
                     <div className="flex justify-between px-2 py-0.5">

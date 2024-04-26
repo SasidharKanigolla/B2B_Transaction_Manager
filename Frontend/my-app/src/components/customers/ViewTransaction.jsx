@@ -130,7 +130,8 @@ const ViewTransaction = () => {
                         Transaction Type : {transactionData.transType}
                       </p>
                       <p className="font-bold text-xl">
-                        {/* Transaction Date : {transactionData?.date?.substring(0, 10).} */}
+                        Transaction Date :{" "}
+                        {transactionData?.date?.substring(0, 10)}
                       </p>
                       <p className="font-bold text-xl">
                         Transaction Due(Credit-Debit) :{" "}
