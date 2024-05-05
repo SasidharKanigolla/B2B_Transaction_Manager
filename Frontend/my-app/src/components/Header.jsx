@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import Cookies from "js-cookie";
@@ -7,6 +7,25 @@ const Header = () => {
   // const [showLogout, setShowLogout] = useState(false);
 
   const { loggedInUserId, setUserInfo } = useContext(UserContext);
+  // State for tracking network status
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  // Event handler for network status changes
+  const updateNetworkStatus = () => {
+    setIsOnline(navigator.onLine);
+  };
+
+  // Add event listeners for online and offline events
+  useEffect(() => {
+    window.addEventListener("online", updateNetworkStatus);
+    window.addEventListener("offline", updateNetworkStatus);
+
+    // Clean up event listeners on component unmount
+    return () => {
+      window.removeEventListener("online", updateNetworkStatus);
+      window.removeEventListener("offline", updateNetworkStatus);
+    };
+  }, []);
 
   const handleLogout = () => {
     Cookies.remove("userData");
@@ -28,6 +47,7 @@ const Header = () => {
       )}
 
       <div className="flex items-center w-full mx-4">
+        <div className="mr-4 text-xl font-bold">{isOnline ? "🟢" : "🔴"}</div>
         {loggedInUserId ? (
           <div className="flex w-full justify-end ">
             <Link to="/ViewOrders" className="mx-2 text-xl font-bold">

@@ -17,6 +17,7 @@ import Stock from "./Images/Stock.png";
 import Others from "./Images/Others.png";
 import Orders from "./Images/orders.png";
 import transactionManager from "./Images/transaction Manager.png";
+import transactB2bionManager from "./B2B.png";
 
 const Home = () => {
   const [custSum, setCustSum] = useState(0);
@@ -146,19 +147,19 @@ const Home = () => {
             </button>
           </Link> */}
           </div>
-          <div className="w-full  my-5   bg-gray-100">
+          <div className="w-full  my-5  px-10 bg-gray-100">
             <h1 className="text-center my-3 text-2xl font-bold">Shortcuts</h1>
             <div>
               <div className="flex justify-between">
                 <div className="w-1/3 rounded-md  text-start mx-2">
-                  <div className="font-bold text-2xl flex justify-center">
+                  <div className="font-bold text-2xl flex justify-center items-center">
                     <h1>Sales &nbsp;</h1>
                     <img src={Sales} alt="" className="w-9" />
                   </div>
                   <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
                     <Link to={"/CustomerHome"}>
                       <div className="flex justify-between px-2 py-0.5">
-                        <p>Sales DashBoard</p>
+                        <p>Sales Dashboard</p>
                         <p>
                           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                         </p>
@@ -177,14 +178,14 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="w-1/3 rounded-md text-start   mx-2 ">
-                  <div className="font-bold text-2xl flex justify-center">
+                  <div className="font-bold text-2xl flex justify-center items-center">
                     <h1>Purchase &nbsp;</h1>
                     <img src={Purchase} alt="" className="w-8" />
                   </div>
                   <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
                     <Link to={"/SupplierHome"}>
                       <div className="flex justify-between px-2 py-0.5">
-                        <p>Purchase DashBoard</p>
+                        <p>Purchase Dashboard</p>
                         <p>
                           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                         </p>
@@ -205,14 +206,14 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="w-1/3 rounded-md  text-start mx-2">
-                  <div className="font-bold text-2xl flex justify-center">
+                  <div className="font-bold text-2xl flex justify-center items-center">
                     <h1>Stock Items &nbsp;</h1>
                     <img src={Stock} alt="" className="w-8" />
                   </div>
                   <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
                     <Link to={"/viewStocks"}>
                       <div className="flex justify-between px-2 py-0.5">
-                        <p>All Stock Items</p>
+                        <p>Stock Dashboard</p>
                         <p>
                           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                         </p>
@@ -232,10 +233,10 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full  my-5   bg-gray-100 flex">
+            <div className="w-full  my-5bg-gray-100 flex">
               {" "}
               <div className="w-1/3 rounded-md  text-start mx-2">
-                <div className="font-bold text-2xl flex justify-center">
+                <div className="font-bold text-2xl flex justify-center items-center">
                   <h1>Parties &nbsp;</h1>
                   <FontAwesomeIcon icon={faUsers} />
                   {/* <img src={Others} alt="" className="w-7 h-7" /> */}
@@ -243,7 +244,7 @@ const Home = () => {
                 <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
                   <Link to={"/AllParty"}>
                     <div className="flex justify-between px-2 py-0.5">
-                      <p>All Party</p>
+                      <p>Parties Dashboard</p>
                       <p>
                         <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                       </p>
@@ -262,14 +263,14 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-1/3 rounded-md  text-start mx-2">
-                <div className="font-bold text-2xl flex justify-center">
+                <div className="font-bold text-2xl flex justify-center items-center">
                   <h1>Orders &nbsp;</h1>
                   <img src={Orders} alt="" className="w-7 h-7" />
                 </div>
                 <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
                   <Link to={"/ViewOrders"}>
                     <div className="flex justify-between px-2 py-0.5">
-                      <p>All Orders</p>
+                      <p>Orders Dashboard</p>
                       <p>
                         <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                       </p>
@@ -288,14 +289,14 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-1/3 rounded-md  text-start mx-2">
-                <div className="font-bold text-2xl flex justify-center">
+                <div className="font-bold text-2xl flex justify-center items-center">
                   <h1>Others &nbsp;</h1>
                   <img src={Others} alt="" className="w-7 h-7" />
                 </div>
                 <p className="hover:bg-gray-400 w-full rounded-md bg-gray-200 my-1 ">
                   <Link to={"/search"}>
                     <div className="flex justify-between px-2 py-0.5">
-                      <p>Search</p>
+                      <p>Search Transactions</p>
                       <p>
                         <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
                       </p>

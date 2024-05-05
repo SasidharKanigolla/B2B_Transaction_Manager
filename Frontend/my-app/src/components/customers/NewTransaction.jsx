@@ -16,8 +16,7 @@ const formatDate = (date) => {
   return `${year}-${month}-${day}`;
 };
 const NewTransaction = () => {
-  const { loggedInUserId, custInvoice, setCustInvoice } =
-    useContext(UserContext);
+  const { loggedInUserId } = useContext(UserContext);
   const [customersData, setCustomersData] = useState([]);
   const [showCredit, setShowCredit] = useState(false);
   const [showDebit, setShowDebit] = useState(false);
@@ -50,7 +49,7 @@ const NewTransaction = () => {
 
   useEffect(() => {
     if (loggedInUserId) fetchData();
-  }, [loggedInUserId]);
+  },[]);
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -277,7 +276,6 @@ const NewTransaction = () => {
         setFormData({
           name: "",
           transType: "",
-          invoice: custInvoice,
           date: new Date(),
           description: "",
           credit: [],
@@ -516,7 +514,7 @@ const NewTransaction = () => {
                                 onChange={(e) =>
                                   handleChangeDetail(e, index, "quantity")
                                 }
-                                className="w-[25%] border-r-4 border-gray-400 bg-gray-200 "
+                                className="w-[25%] border-r-4 border-gray-400 bg-gray-200 text-end"
                               />
                               <input
                                 type="number"
@@ -530,7 +528,7 @@ const NewTransaction = () => {
                                 onChange={(e) =>
                                   handleChangeDetail(e, index, "pricePerUnit")
                                 }
-                                className="w-[25%] border-r-4 border-gray-400 bg-gray-200 "
+                                className="w-[25%] border-r-4 border-gray-400 bg-gray-200 text-end"
                               />
                               <input
                                 type="number"
@@ -540,7 +538,7 @@ const NewTransaction = () => {
                                 onChange={(e) =>
                                   handleChangeDetail(e, index, "amount")
                                 }
-                                className="w-[25%] border-r-4  border-gray-400 bg-gray-200 "
+                                className="w-[25%] border-r-4  border-gray-400 bg-gray-200 text-end"
                               />
                               <div className="flex justify-center ">
                                 <button

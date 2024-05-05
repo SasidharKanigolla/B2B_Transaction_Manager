@@ -199,125 +199,146 @@ const Search = () => {
           </div>
           {/* <div className="bg-black h-0.5 w-full mt-4 mb-8">.</div> */}
 
-          <div className="mx-5 border-4 border-black w-full">
-            <div className="flex justify-evenly font-bold ">
-              <p className=" px-4 text-center border-r-4 bg-gray-400 w-[50%]">
-                From Date:{fromDate}
-              </p>
-              <p className=" px-4 text-center  bg-gray-400 w-[50%]">
-                To Date:{toDate}
-              </p>
-            </div>
-            <div className="h-1"></div>
-            <div className="flex   font-bold ">
-              <div className="w-full border-r-2 ">
-                <div className=" text-center border-b-4 bg-gray-400 w-full">
-                  Purchase/Payment-out Transactions
-                </div>
-                <div className="flex justify-between font-bold border-b-4">
-                  <p className="  text-center border-r-2 bg-gray-400 w-[34.33%]">
-                    Total Paid Amount : {paidAmnt}
-                  </p>
-                  <p className="  text-center border-r-2 bg-gray-400 w-[28%]">
-                    Total Quantity: {totalPurchQuantity}
-                  </p>
-                  <p className="  text-center  bg-gray-400 w-[37.33%]">
-                    Total Purchase Amount :{purchAmnt}
-                  </p>
-                </div>
+          <div className="mx-5  w-full">
+            {requestedData.length === 0 ? (
+              <div className="text-center py-10">
+                <p className="text-2xl font-bold">
+                  No data found between selected dates.
+                </p>
               </div>
-              <div className=" font-bold w-full border-l-2">
-                <div className="  text-center border-b-4 bg-gray-400 w-full">
-                  Sales/Payment-in Transactions
-                </div>
-                <div className="flex justify-between font-bold mb-3">
-                  <p className="  text-center border-r-2 bg-gray-400 w-[34.33%]">
-                    Total Debit Amount : {debitAmnt}
+            ) : (
+              <div>
+                <div className="flex justify-evenly font-bold ">
+                  <p className=" px-4 text-center border-r-4 bg-gray-400 w-[50%]">
+                    From Date:{fromDate}
                   </p>
-                  <p className="  text-center border-r-2 bg-gray-400 w-[28%]">
-                    Total Quantity: {totalCustQuantity}
-                  </p>
-                  <p className="  text-center  bg-gray-400 w-[37.33%]">
-                    Total Credit Amount :{creditAmnt}
+                  <p className=" px-4 text-center  bg-gray-400 w-[50%]">
+                    To Date:{toDate}
                   </p>
                 </div>
-              </div>
-            </div>
+                <div className="h-1"></div>
+                <div className="flex   font-bold ">
+                  <div className="w-full border-r-2 ">
+                    <div className=" text-center border-b-4 bg-gray-400 w-full">
+                      Purchase/Payment-out Transactions
+                    </div>
+                    <div className="flex justify-between font-bold border-b-4">
+                      <p className="  text-center border-r-2 bg-gray-400 w-[34.33%]">
+                        Total Paid Amount : {paidAmnt}
+                      </p>
+                      <p className="  text-center border-r-2 bg-gray-400 w-[28%]">
+                        Total Quantity: {totalPurchQuantity}
+                      </p>
+                      <p className="  text-center  bg-gray-400 w-[37.33%]">
+                        Total Purchase Amount :{purchAmnt}
+                      </p>
+                    </div>
+                  </div>
+                  <div className=" font-bold w-full border-l-2">
+                    <div className="  text-center border-b-4 bg-gray-400 w-full">
+                      Sales/Payment-in Transactions
+                    </div>
+                    <div className="flex justify-between font-bold mb-3">
+                      <p className="  text-center border-r-2 bg-gray-400 w-[34.33%]">
+                        Total Debit Amount : {debitAmnt}
+                      </p>
+                      <p className="  text-center border-r-2 bg-gray-400 w-[28%]">
+                        Total Quantity: {totalCustQuantity}
+                      </p>
+                      <p className="  text-center  bg-gray-400 w-[37.33%]">
+                        Total Credit Amount :{creditAmnt}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="flex justify-between text-white bg-gray-600 mb-2">
-              <p className="w-[7.5%]  px-4 text-center border-r-4">Date</p>
-              <p className="w-[15.5%]  px-4 text-center border-r-4">Name</p>
-              <p className="w-[9%]  px-4 text-center border-r-4">P/S</p>
-              <p className="w-[15%]  px-4 text-center border-r-4">
-                Transaction Type
-              </p>
-              <p className="w-[15%]  px-4 text-center border-r-4">
-                Debit/Paid Amount
-              </p>
-              <p className="w-[15%]  px-4 text-center border-r-4">Quantity</p>
-              <p className="w-[15%]  px-4 text-center border-r-4">
-                Credit/Purchase Amount
-              </p>
-              <p className="w-[8.5%]  px-4 text-center ">View</p>
-            </div>
-            {Object.values(requestedData)
-              .sort(function (a, b) {
-                var dateA = new Date(a.date),
-                  dateB = new Date(b.date);
-                return dateB - dateA;
-              })
-              .map((trans, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between my-0.5 bg-gray-400"
-                >
-                  <p className="w-[7.5%] font-bold   border-r-4">
-                    {trans.date.substring(0, 10)}
+                <div className="flex justify-between text-white bg-gray-600 mb-2">
+                  <p className="w-[7.5%]  px-4 text-center border-r-4">Date</p>
+                  <p className="w-[15.5%]  px-4 text-center border-r-4">Name</p>
+                  <p className="w-[9%]  px-4 text-center border-r-4">P/S</p>
+                  <p className="w-[15%]  px-4 text-center border-r-4">
+                    Transaction Type
                   </p>
-                  <p className="w-[15.5%] font-bold   border-r-4">
-                    {trans?.custDetails?.name?.substring(0, 17) ||
-                      trans?.supplierDetails?.name?.substring(0, 17)}
+                  <p className="w-[15%]  px-4 text-center border-r-4">
+                    Debit/Paid Amount
                   </p>
-                  <p className="w-[9%] font-bold    border-r-4">
-                    {trans.transType === "Debit&Credit" ||
-                    trans.transType === "Credit" ||
-                    trans.transType === "Debit"
-                      ? "Sales"
-                      : "Purchase"}
+                  <p className="w-[15%]  px-4 text-center border-r-4">
+                    Quantity
                   </p>
-                  <p className="w-[15%] font-bold   border-r-4">
-                    {trans.transType}
+                  <p className="w-[15%]  px-4 text-center border-r-4">
+                    Credit/Purchase Amount
                   </p>
-                  <p className="w-[15%] font-bold   text-end border-r-4">
-                    {trans?.totalCreditAmount || trans?.totalPaidAmount || 0}
-                  </p>
-                  <p className="w-[15%] font-bold   text-end border-r-4">
-                    {trans.totalQuantity || trans?.totalPurchaseQuantity || 0}
-                  </p>
-                  <p className="w-[15%] font-bold   text-end border-r-4">
-                    {trans?.totalDebitAmount || trans?.totalPurchaseAmount || 0}
-                  </p>
-                  {trans.transType === "Debit&Credit" ||
-                  trans.transType === "Credit" ||
-                  trans.transType === "Debit" ? (
-                    <p className="w-[8.5%] font-bold text-white text-center">
-                      <Link to={"/viewtransaction/" + trans._id}>
-                        <button className="rounded-xl bg-green-600 px-3">
-                          View
-                        </button>
-                      </Link>
-                    </p>
-                  ) : (
-                    <p className="w-[8.5%] font-bold text-white text-center">
-                      <Link to={"/viewSupplierTransaction/" + trans._id}>
-                        <button className="rounded-xl bg-green-600 px-3">
-                          View
-                        </button>
-                      </Link>
-                    </p>
-                  )}
+                  <p className="w-[8.5%]  px-4 text-center ">View</p>
                 </div>
-              ))}
+
+                <div>
+                  {Object.values(requestedData)
+                    .sort(function (a, b) {
+                      var dateA = new Date(a.date),
+                        dateB = new Date(b.date);
+                      return dateB - dateA;
+                    })
+                    .map((trans, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-between my-0.5 bg-gray-400"
+                      >
+                        <p className="w-[7.5%] font-bold   border-r-4">
+                          {trans.date.substring(0, 10)}
+                        </p>
+                        <p className="w-[15.5%] font-bold   border-r-4">
+                          {trans?.custDetails?.name?.substring(0, 17) ||
+                            trans?.supplierDetails?.name?.substring(0, 17)}
+                        </p>
+                        <p className="w-[9%] font-bold    border-r-4">
+                          {trans.transType === "Debit&Credit" ||
+                          trans.transType === "Credit" ||
+                          trans.transType === "Debit"
+                            ? "Sales"
+                            : "Purchase"}
+                        </p>
+                        <p className="w-[15%] font-bold   border-r-4">
+                          {trans.transType}
+                        </p>
+                        <p className="w-[15%] font-bold   text-end border-r-4">
+                          {trans?.totalCreditAmount ||
+                            trans?.totalPaidAmount ||
+                            0}
+                        </p>
+                        <p className="w-[15%] font-bold   text-end border-r-4">
+                          {trans.totalQuantity ||
+                            trans?.totalPurchaseQuantity ||
+                            0}
+                        </p>
+                        <p className="w-[15%] font-bold   text-end border-r-4">
+                          {trans?.totalDebitAmount ||
+                            trans?.totalPurchaseAmount ||
+                            0}
+                        </p>
+                        {trans.transType === "Debit&Credit" ||
+                        trans.transType === "Credit" ||
+                        trans.transType === "Debit" ? (
+                          <p className="w-[8.5%] font-bold text-white text-center">
+                            <Link to={"/viewtransaction/" + trans._id}>
+                              <button className="rounded-xl bg-green-600 px-3">
+                                View
+                              </button>
+                            </Link>
+                          </p>
+                        ) : (
+                          <p className="w-[8.5%] font-bold text-white text-center">
+                            <Link to={"/viewSupplierTransaction/" + trans._id}>
+                              <button className="rounded-xl bg-green-600 px-3">
+                                View
+                              </button>
+                            </Link>
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

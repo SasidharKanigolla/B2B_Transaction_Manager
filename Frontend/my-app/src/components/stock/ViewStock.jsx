@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
-import { URL, DELETEPASS } from "../../utils/Constants";
+import { URL } from "../../utils/Constants";
 import LoginShow from "../LoginShow";
 import NotOwner from "../../utils/NotOwner";
 import Loading from "../../utils/Loading";

@@ -11,6 +11,7 @@ import {
   faUserPlus,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
+import No_data from "../components/Images/No_data.jpg";
 
 const AllParty = () => {
   const [customersData, setCustomersData] = useState([]);
@@ -62,7 +63,9 @@ const AllParty = () => {
         <div className="mb-24">
           <div className="flex flex-col items-center">
             <div className="mb-5  w-[80%] flex justify-between items-center">
-              <p className="font-bold text-3xl ">All Parties <FontAwesomeIcon icon={faUsers}/></p>
+              <p className="font-bold text-3xl ">
+                All Parties <FontAwesomeIcon icon={faUsers} />
+              </p>
               <button
                 onClick={downloadExcel}
                 className="rounded-xl p-2 bg-red-600 text-white hover:opacity-50"
@@ -71,64 +74,79 @@ const AllParty = () => {
                 <FontAwesomeIcon icon={faDownload} />
               </button>
             </div>
-            <div className="w-[80%] mb-5 flex justify-center ">
-              <div className="w-[40%] ">
-                <input
-                  type="text"
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full border  bg-gray-200 rounded-md py-2 px-3 mt-1 border-gray-600 focus:outline-none focus:border-blue-600 placeholder:text-black"
-                  placeholder="Search Party By Name or Mobile Number"
-                />
-                {/* <FontAwesomeIcon icon={faMagnifyingGlass} className="absolute h-8 right-40"/> */}
-              </div>
-            </div>
-            <div className="w-[80%] border border-black">
-              <div className="flex bg-gray-600 text-white mb-3">
-                <p className="w-[40%]  px-4 text-center border-r-4">Name</p>
-                <p className="w-[20%]  px-4 text-center border-r-4">Mobile</p>
-                <p className="w-[20%]  px-4 text-center border-r-4">
-                  Amount Due
-                </p>
-                <p className="w-[20%]  px-4 text-center ">View</p>
-              </div>
-              {customersData
-                .filter(
-                  (cust) =>
-                    cust.name
-                      .toLowerCase()
-                      .includes(searchQuery.toLowerCase()) ||
-                    String(cust?.mobile ?? "").includes(searchQuery)
-                )
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((cust) => (
-                  <div className="flex bg-gray-400 mb-0.5 font-bold">
-                    <p className="w-[40%]  px-0 text-center border-r-4">
-                      {cust.name}
+            {customersData.length !== 0 ? (
+              <div className="w-[100%] mb-5 flex flex-col items-center ">
+                <div className="w-[80%] mb-5 flex justify-center ">
+                  <div className="w-[40%] ">
+                    <input
+                      type="text"
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full border  bg-gray-200 rounded-md py-2 px-3 mt-1 border-gray-600 focus:outline-none focus:border-blue-600 placeholder:text-black"
+                      placeholder="Search Party By Name or Mobile Number"
+                    />
+                    {/* <FontAwesomeIcon icon={faMagnifyingGlass} className="absolute h-8 right-40"/> */}
+                  </div>
+                </div>
+                <div className="w-[80%] border border-black">
+                  <div className="flex bg-gray-600 text-white mb-3">
+                    <p className="w-[40%]  px-4 text-center border-r-4">Name</p>
+                    <p className="w-[20%]  px-4 text-center border-r-4">
+                      Mobile
                     </p>
                     <p className="w-[20%]  px-4 text-center border-r-4">
-                      {cust.mobile}
+                      Amount Due
                     </p>
-                    <p className="w-[20%]  px-4 text-end border-r-4">
-                      {cust.amount}/-
-                    </p>
-                    <div className="w-[20%]  px-4 text-center ">
-                      <Link to={"/ViewParty/" + cust._id}>
-                        <button className="px-4 bg-green-600 text-white rounded-xl">
-                          View
-                        </button>
-                      </Link>
-                    </div>
+                    <p className="w-[20%]  px-4 text-center ">View</p>
                   </div>
-                ))}
-            </div>
-          </div>
+                  {customersData
+                    .filter(
+                      (cust) =>
+                        cust.name
+                          .toLowerCase()
+                          .includes(searchQuery.toLowerCase()) ||
+                        String(cust?.mobile ?? "").includes(searchQuery)
+                    )
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((cust) => (
+                      <div className="flex bg-gray-400 mb-0.5 font-bold">
+                        <p className="w-[40%]  px-0 text-center border-r-4">
+                          {cust.name}
+                        </p>
+                        <p className="w-[20%]  px-4 text-center border-r-4">
+                          {cust.mobile}
+                        </p>
+                        <p className="w-[20%]  px-4 text-end border-r-4">
+                          {cust.amount}/-
+                        </p>
+                        <div className="w-[20%]  px-4 text-center ">
+                          <Link to={"/ViewParty/" + cust._id}>
+                            <button className="px-4 bg-green-600 text-white rounded-xl">
+                              View
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-10">
+                <p className="text-2xl font-bold">
+                  No parties found. Please add a party.
+                </p>
+                <div className="flex justify-center">
+                  <img src={No_data} alt="" className="w-[400px] h-96 " />
+                </div>
+              </div>
+            )}
 
-          <div className="fixed right-10 bottom-10">
-            <Link to="/NewParty">
-              <button className="rounded-xl p-4 bg-red-600 text-white hover:opacity-50">
-                Add New Party <FontAwesomeIcon icon={faUserPlus} />
-              </button>
-            </Link>
+            <div className="fixed right-10 bottom-10">
+              <Link to="/NewParty">
+                <button className="rounded-xl p-4 bg-red-600 text-white hover:opacity-50">
+                  Add New Party <FontAwesomeIcon icon={faUserPlus} />
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       )}

@@ -6,6 +6,7 @@ import UserContext from "../../utils/UserContext";
 import Loading from "../../utils/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import No_data from "../Images/No_data.jpg";
 
 const SuppliersHome = () => {
   const { loggedInUserId } = useContext(UserContext);
@@ -27,8 +28,13 @@ const SuppliersHome = () => {
     const suppltrans = data.filter((item) => {
       return item.owner === loggedInUserId?._id;
     });
+    const currentYear = new Date().getFullYear();
+    const yearlyData = suppltrans.filter((trans) => {
+      const transactionDate = new Date(trans.date);
+      return transactionDate.getFullYear() === currentYear;
+    });
     // console.log(suppltrans);
-    setTransactionData(suppltrans);
+    setTransactionData(yearlyData);
 
     const todayDate = new Date();
     const year = todayDate.getFullYear();
@@ -85,60 +91,72 @@ const SuppliersHome = () => {
             </div>
 
             <h1 className="mb-10 text-3xl font-bold">
-              Recent Purchase Transactions
+              {new Date().getFullYear()} Purchase Transactions
             </h1>
-            <div className="w-[80%] flex flex-col items-center  border-4 border-black pb-1">
-              <div className="w-full flex font-bold text-white text-center mb-2">
-                <p className="w-[10%] bg-gray-600 border-r-4">Date</p>
-                <p className="w-[25%] bg-gray-600 border-r-4">Name</p>
-                <p className="w-[10%] bg-gray-600 border-r-4">Bill No</p>
-                <p className="w-[15%] bg-gray-600 border-r-4">Paid Amount</p>
-                <p className="w-[15%] bg-gray-600 border-r-4">
-                  Purchase Quantity
+            {transactionData.length === 0 ? (
+              <div className="text-center py-10">
+                <p className="text-2xl font-bold">
+                  No {new Date().getFullYear()} transactions found. Please add a
+                  Purchase or payment-out transaction.
                 </p>
-                <p className="w-[15%] bg-gray-600 border-r-4">
-                  Purchase Amount
-                </p>
-                <p className="w-[10%] bg-gray-600 ">View</p>
+                <div className="flex justify-center">
+                  <img src={No_data} alt="" className="w-[400px] h-96 " />
+                </div>
               </div>
-              <div className="w-full">
-                {Object.values(transactionData)
-                  .sort(function (a, b) {
-                    var dateA = new Date(a.date),
-                      dateB = new Date(b.date);
-                    return dateB - dateA;
-                  })
-                  .map((trans, index) => (
-                    <div key={index} className="flex mb-0.5">
-                      <p className="w-[10%] bg-gray-400 border-r-4">
-                        {trans.date.substring(0, 10)}
-                      </p>
-                      <p className="w-[25%] bg-gray-400 border-r-4">
-                        {trans?.supplierDetails?.name.substring(0, 30)}
-                      </p>
-                      <p className="w-[10%] bg-gray-400 border-r-4">
-                        {trans.bill_no}
-                      </p>
-                      <p className="w-[15%] bg-gray-400 border-r-4">
-                        {trans?.totalPaidAmount}
-                      </p>
-                      <p className="w-[15%] bg-gray-400 border-r-4">
-                        {trans?.totalPurchaseQuantity}
-                      </p>
-                      <p className="w-[15%] bg-gray-400 border-r-4">
-                        {trans?.totalPurchaseAmount}
-                      </p>
-                      <p className="w-[10%] bg-gray-400  text-center">
-                        <Link to={"/viewSupplierTransaction/" + trans._id}>
-                          <button className="bg-green-600 px-4 text-white font-bold rounded-xl">
-                            View
-                          </button>
-                        </Link>
-                      </p>
-                    </div>
-                  ))}
+            ) : (
+              <div className="w-[80%] flex flex-col items-center  border-4 border-black pb-1">
+                <div className="w-full flex font-bold text-white text-center mb-2">
+                  <p className="w-[10%] bg-gray-600 border-r-4">Date</p>
+                  <p className="w-[25%] bg-gray-600 border-r-4">Name</p>
+                  <p className="w-[10%] bg-gray-600 border-r-4">Bill No</p>
+                  <p className="w-[15%] bg-gray-600 border-r-4">Paid Amount</p>
+                  <p className="w-[15%] bg-gray-600 border-r-4">
+                    Purchase Quantity
+                  </p>
+                  <p className="w-[15%] bg-gray-600 border-r-4">
+                    Purchase Amount
+                  </p>
+                  <p className="w-[10%] bg-gray-600 ">View</p>
+                </div>
+                <div className="w-full">
+                  {Object.values(transactionData)
+                    .sort(function (a, b) {
+                      var dateA = new Date(a.date),
+                        dateB = new Date(b.date);
+                      return dateB - dateA;
+                    })
+                    .map((trans, index) => (
+                      <div key={index} className="flex mb-0.5">
+                        <p className="w-[10%] bg-gray-400 border-r-4">
+                          {trans.date.substring(0, 10)}
+                        </p>
+                        <p className="w-[25%] bg-gray-400 border-r-4">
+                          {trans?.supplierDetails?.name.substring(0, 30)}
+                        </p>
+                        <p className="w-[10%] bg-gray-400 border-r-4">
+                          {trans.bill_no}
+                        </p>
+                        <p className="w-[15%] bg-gray-400 border-r-4">
+                          {trans?.totalPaidAmount}
+                        </p>
+                        <p className="w-[15%] bg-gray-400 border-r-4">
+                          {trans?.totalPurchaseQuantity}
+                        </p>
+                        <p className="w-[15%] bg-gray-400 border-r-4">
+                          {trans?.totalPurchaseAmount}
+                        </p>
+                        <p className="w-[10%] bg-gray-400  text-center">
+                          <Link to={"/viewSupplierTransaction/" + trans._id}>
+                            <button className="bg-green-600 px-4 text-white font-bold rounded-xl">
+                              View
+                            </button>
+                          </Link>
+                        </p>
+                      </div>
+                    ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className="fixed left-10 bottom-10">
             <Link to="/NewParty">

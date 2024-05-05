@@ -5,8 +5,8 @@ import UserContext from "../../utils/UserContext";
 import LoginShow from "../LoginShow";
 import Loading from "../../utils/Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import No_data from "../Images/No_data.jpg";
 
 const CustomerHome = () => {
   console.log("Hii");
@@ -124,80 +124,98 @@ const CustomerHome = () => {
           <h1 className="mb-10 text-3xl font-bold">
             View Today Sales Transactions
           </h1>
-
-          <div className="mx-4 border-4 border-black w-[90%]">
-            <div className="flex flex-col">
-              <div className="">
-                <p className="font-bold text-center bg-gray-400 border-b-4">
-                  {Date(Date.now()).substring(4, 15)}
-                </p>
+          {todayTransaction.length === 0 ? (
+            <div className="text-center py-10">
+              <p className="text-2xl font-bold">
+                No transactions recorded today. Please add a sales or payment-in
+                transaction.
+              </p>
+              <div className="flex justify-center">
+                <img src={No_data} alt="" className="w-[400px] h-96 " />
               </div>
-
-              <div className="flex w-full  font-bold border-b-4">
-                <p className=" px-4 text-center border-r-4 bg-gray-400 w-[33.33%]">
-                  Quantity:{TodayQuantity}
-                </p>
-                <p className="text-center px-4 bg-gray-400 border-r-4 w-[33.33%]">
-                  Credit Amount:{creditAmnt}
-                </p>
-                <p className="text-center px-4 bg-gray-400 w-[33.34%] ">
-                  Debit Amount:
-                  {debitAmnt}
-                </p>
-              </div>
+              {/* <div className="my-5">
+                <Link to="/addNewTransaction">
+                  <button className="rounded-xl p-4 bg-red-600 text-white hover:opacity-50">
+                    Add Sale/Payment-In Transaction
+                  </button>
+                </Link>
+              </div> */}
             </div>
-
-            <div className="">
-              <div className="flex justify-between text-white bg-gray-600 mb-2">
-                <p className="w-[25%]  px-4 text-center border-r-4">Name</p>
-                <p className="w-[20%]  px-4 text-center border-r-4">
-                  Transaction Type
-                </p>
-                <p className="w-[15%]  px-4 text-center border-r-4">
-                  Total Quantity
-                </p>
-                <p className="w-[15%]  px-4 text-center border-r-4">
-                  Total Debit Amount
-                </p>
-                <p className="w-[15%]  px-4 text-center border-r-4">
-                  Total Credit Amount
-                </p>
-                <p className="w-[10%]  px-4 text-center ">View</p>
-              </div>
-              {todayTransaction.map((trans, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between my-0.5 bg-gray-400 "
-                >
-                  {/* {console.log(trans.date)} */}
-                  <p className="w-[25%] font-bold   border-r-4">
-                    {trans.custDetails.name.substring(0, 28)}
-                  </p>
-                  <p className="w-[20%] font-bold   border-r-4">
-                    {trans.transType}
-                  </p>
-                  <p className="w-[15%] font-bold   text-end border-r-4">
-                    {trans.totalQuantity}
-                  </p>
-                  <p className="w-[15%] font-bold   text-end border-r-4">
-                    {trans?.totalCreditAmount}
-                  </p>
-                  <p className="w-[15%] font-bold   text-end border-r-4">
-                    {trans.totalDebitAmount}
-                  </p>
-
-                  <p className="w-[10%] font-bold   text-white text-center ">
-                    <Link to={"/viewTransaction/" + trans._id}>
-                      <button className="rounded-xl bg-green-600 px-6">
-                        View
-                      </button>
-                    </Link>
+          ) : (
+            <div className="mx-4 border-4 border-black w-[90%]">
+              <div className="flex flex-col">
+                <div className="">
+                  <p className="font-bold text-center bg-gray-400 border-b-4">
+                    {Date(Date.now()).substring(4, 15)}
                   </p>
                 </div>
-              ))}
-            </div>
-          </div>
 
+                <div className="flex w-full  font-bold border-b-4">
+                  <p className=" px-4 text-center border-r-4 bg-gray-400 w-[33.33%]">
+                    Quantity:{TodayQuantity}
+                  </p>
+                  <p className="text-center px-4 bg-gray-400 border-r-4 w-[33.33%]">
+                    Credit Amount:{creditAmnt}
+                  </p>
+                  <p className="text-center px-4 bg-gray-400 w-[33.34%] ">
+                    Debit Amount:
+                    {debitAmnt}
+                  </p>
+                </div>
+              </div>
+
+              <div className="">
+                <div className="flex justify-between text-white bg-gray-600 mb-2">
+                  <p className="w-[25%]  px-4 text-center border-r-4">Name</p>
+                  <p className="w-[20%]  px-4 text-center border-r-4">
+                    Transaction Type
+                  </p>
+                  <p className="w-[15%]  px-4 text-center border-r-4">
+                    Total Quantity
+                  </p>
+                  <p className="w-[15%]  px-4 text-center border-r-4">
+                    Total Debit Amount
+                  </p>
+                  <p className="w-[15%]  px-4 text-center border-r-4">
+                    Total Credit Amount
+                  </p>
+                  <p className="w-[10%]  px-4 text-center ">View</p>
+                </div>
+                {todayTransaction &&
+                  todayTransaction.map((trans, index) => (
+                    <div
+                      key={index}
+                      className="flex justify-between my-0.5 bg-gray-400 "
+                    >
+                      {/* {console.log(trans.date)} */}
+                      <p className="w-[25%] font-bold   border-r-4">
+                        {trans.custDetails.name.substring(0, 28)}
+                      </p>
+                      <p className="w-[20%] font-bold   border-r-4">
+                        {trans.transType}
+                      </p>
+                      <p className="w-[15%] font-bold   text-end border-r-4">
+                        {trans.totalQuantity}
+                      </p>
+                      <p className="w-[15%] font-bold   text-end border-r-4">
+                        {trans?.totalCreditAmount}
+                      </p>
+                      <p className="w-[15%] font-bold   text-end border-r-4">
+                        {trans.totalDebitAmount}
+                      </p>
+
+                      <p className="w-[10%] font-bold   text-white text-center ">
+                        <Link to={"/viewTransaction/" + trans._id}>
+                          <button className="rounded-xl bg-green-600 px-6">
+                            View
+                          </button>
+                        </Link>
+                      </p>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          )}
           <div className="fixed right-10 bottom-10">
             <Link to="/addNewTransaction">
               <button className="rounded-xl p-4 bg-red-600 text-white hover:opacity-50">
